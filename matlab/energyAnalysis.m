@@ -1,14 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% data load %%%%%%%%%%%%%%%%%%%%%%%%%%
-% filename = '../data/Буссоль/strait_all.xls';
-% filename = 'C:\Users\Alexandr\Desktop\data.xls';
 filename = '../data/Буссоль/circles_all.xls';
-% filename = '../data/Индийский/Индийский.xls';
-% signal = load(filename);
-% signal = xlsread(filename, 'p1:p34960');
 signal = xlsread(filename, 'b1:b34800');
-% signal = xlsread(filename, 'p1:p2401');
-% signal = xlsread(filename, 'o24150:o31700');
-% signal = p2Data_int';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% --------- %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 calcMareogramm = 1;
