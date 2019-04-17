@@ -7,6 +7,6 @@ function fb=cgau_fb(f0, df, dur);
 
 Nf=length(f0); % Number of filters
 fb=cell(1, Nf);
-for n=1:Nf,
+for n=1:Nf
    fb{n}=cgau_f(f0(n), df(n), dur);
 end

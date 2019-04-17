@@ -51,8 +51,8 @@ if calcWavelet
     % Расчёт фильтрбанка
     filterBank = cgau_fb(f0, df, 4);
 
-    frequencyScale_cph = seconds * ((f0 / dt) / 2);
-    % frequencyScale_cph = seconds * f0;
+    % frequencyScale_cph = 3600 * ((f0 / dt) / 2);
+    frequencyScale_cph = seconds * f0;
     intensity = firfb_proc(filterBank, signal');
 
     if drawWavelet
