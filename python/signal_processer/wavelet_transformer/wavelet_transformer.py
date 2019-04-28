@@ -6,13 +6,28 @@ from python.signal_processer.wavelet_transformer.utils import cgau_fb, firfb_pro
 
 
 class WaveletTransformer:
-    def __init__(self, number_of_filters=200, seconds=60, max_cp_h=6):
+    """
+    WaveletTransformer is the class for computing wavelet-like transformation for the signal.
+
+    Example of using this class:
+        ```
+        wt = WaveletTransformer()
+        intensity = wt(signal)
+        ```
+    """
+
+    def __init__(self, number_of_filters=200, max_c_p_h=6):
+        """
+        Constructor of the WaveletTransformer
+        :param number_of_filters: number of filters (default = 200)
+        :param max_c_p_h:maximum frequency in cycles per hour (default = 6)
+        """
         self.number_of_filters = number_of_filters
-        self.seconds = seconds
-        self.max_cp_h = max_cp_h
+        self.max_c_p_h = max_c_p_h
+        self.seconds = 60
 
     def _compute_f0(self):
-        return np.linspace(0.1 / self.seconds, self.max_cp_h / self.seconds, self.number_of_filters)
+        return np.linspace(0.1 / self.seconds, self.max_c_p_h / self.seconds, self.number_of_filters)
 
     @functools.lru_cache()
     def _compute_filter_bank(self):
