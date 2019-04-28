@@ -1,6 +1,7 @@
 function plot_iPower(X, Y, label_font_size, axes_font_size)
 
-figure(),plot(X, Y, 'Color', 'black', 'LineStyle', '-', 'LineWidth', 2);
+figure('units','normalized','outerposition',[0 0 1 1]);
+plot(X, Y, 'Color', 'black', 'LineStyle', '-', 'LineWidth', 2);
 
 H=gca;
 set(H, 'XLim', [0, max(X)], 'XGrid', 'on', 'YGrid', 'on', 'GridLineStyle', ':');

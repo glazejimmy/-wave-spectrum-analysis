@@ -1,13 +1,16 @@
-strait_points='../data/Буссоль/strait_all.xls';
-circle_points='../data/Буссоль/circles_all.xls';
-
-p1Data=xlsread(strait_points, 'e1:e34960');
-p2Data=xlsread(strait_points, 'd1:d34960');
+GoogleDrive_folder = 'D:\GoogleDrive\';
+folder =  sprintf('%s%s',GoogleDrive_folder,'M_degree\SpectrumAnalysis\data\Kerchenskiy\');
+filename = sprintf('%s%s',folder,'7m.txt');
+A = dlmread(filename);
+p1Data = A(:,2);
+filename = sprintf('%s%s',folder,'8m.txt');
+A = dlmread(filename);
+p2Data= A(:,2);
 
 p1Data=p1Data-mean(p1Data);
 p2Data=p2Data-mean(p2Data);
 
-dt=0.5;
+dt=20;
 fft_=80000;
 % hzStep=1/(fft_/2);
 % hzStep=1/dt/length(p2Data);
@@ -55,11 +58,17 @@ hold off;
 
 TF1 = p1DensityPart - p2DensityPart;
 TF2 = p2DensityPart - p1DensityPart;
-figure('Name', 'tf'),plot(chPart, TF2, 'Color', 'black', 'LineStyle', '-', 'LineWidth', 2);
+ii = min(chPart):abs(max(chPart)-min(chPart))/(length(chPart)*100):max(chPart);
+TF1_interp = spline(chPart,TF1',ii);
+TF2_interp = spline(chPart,TF2',ii);
+% figure('Name', 'tf'),plot(chPart, TF1, 'Color', 'black', 'LineStyle', '-', 'LineWidth', 2);
+% hold on 
+plot(ii, TF1_interp, 'Color', 'black', 'LineStyle', '-', 'LineWidth', 2);
 
 H=gca;
 grid on;
 set(H,'FontSize',22,'FontName','Times');
 set(H,'Ydir','normal', 'GridLineStyle', ':');
+set(H, 'XLim', [0, 6]);
 xlabel('f, cycles/h','FontSize',34,'FontName','Times');
 ylabel('magnitude response, dB','FontSize',34,'FontName','Times');

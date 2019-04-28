@@ -11,7 +11,14 @@ function plot_wavelet(timeScale, frequencyScale, intensity, alpha, label_font_si
 % belive this %
 % figure,imagesc(timeScale, frequencyScale, 20 * log10( abs(intensity)+alpha ) + 20), colorbar('vert'),
 %%%%%%%%%%
-figure,imagesc(timeScale, frequencyScale, 20 * log10( abs(intensity)+alpha )), colorbar('vert'),
+intensity_log = 20 * log10( abs(intensity)+alpha );
+min_intensity_log = 0;
+if (min(min(intensity_log))<0)
+    min_intensity_log = min(min(intensity_log));
+end
+% figure,imagesc(timeScale, frequencyScale, 20 * log10( abs(intensity)+alpha )), colorbar('vert'), colormap('jet')
+figure('units','normalized','outerposition',[0 0 1 1]);
+imagesc(timeScale, frequencyScale, intensity_log - min_intensity_log), colorbar('vert'), colormap('jet')
 
 H=gca;
 set(H, 'XLim', [min(timeScale), max(timeScale)], 'YDir', 'normal', 'XGrid', 'on', 'YGrid', 'on', 'GridLineStyle', ':', 'YScale', 'linear');

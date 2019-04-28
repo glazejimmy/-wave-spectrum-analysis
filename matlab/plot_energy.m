@@ -1,6 +1,6 @@
 function plot_energy(X, Y, alpha, label_font_size, axes_font_size)
 
-fig = figure();
+fig = figure('units','normalized','outerposition',[0 0 1 1]);
 axes1 = axes('Parent', fig,...
     'YAxisLocation', 'right',...
     'FontSize', axes_font_size,...
@@ -11,7 +11,7 @@ axes1 = axes('Parent', fig,...
 
 xlim(axes1,[0 1]);
 xlabel('normalized energy spectrum', 'FontSize', label_font_size, 'FontName', 'Times');
-ylim(axes1,[alpha, 8]);
+ylim(axes1,[alpha, max(Y)]);
 ylabel('f, cycle/h', 'FontSize', label_font_size, 'FontName','Times');
 
 box(axes1, 'on');
