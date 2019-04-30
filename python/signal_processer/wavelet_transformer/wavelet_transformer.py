@@ -42,7 +42,7 @@ class WaveletTransformer:
     def __call__(self, signal, alpha=10 ** -2):
         filter_bank = self._compute_filter_bank()
         intensity = firfb_proc(filter_bank, signal)
-        intensity_log = 20 * np.log(abs(intensity) + alpha)
+        intensity_log = 20 * np.log(np.absolute(intensity) + alpha)
         min_intensity_log = np.min(intensity_log)
         if min_intensity_log < 0:
             intensity_log -= min_intensity_log
