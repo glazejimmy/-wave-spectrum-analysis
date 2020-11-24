@@ -2,7 +2,7 @@ import functools
 
 import numpy as np
 
-from python.signal_processer.wavelet_transformer.utils import cgau_fb, firfb_proc
+from python.signal_processor.wavelet_transformer.utils import cgau_fb, firfb_proc
 
 
 class WaveletTransformer:

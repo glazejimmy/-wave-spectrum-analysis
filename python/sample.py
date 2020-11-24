@@ -5,11 +5,11 @@ import matplotlib.pyplot as plt
 
 from python.constants import DATA_FOLDER
 from python.read_text_file import read_text_file
-from python.signal_processer import compute_energy, compute_power
-from python.signal_processer.plt import plot_wavelet, plot_mareogramm, plot_energy
-from python.signal_processer.plt.plot import plot_power, set_size
+from python.signal_processor import compute_energy, compute_power
+from python.signal_processor.plt import plot_wavelet, plot_mareogramm, plot_energy
+from python.signal_processor.plt.plot import plot_power, set_size
 
-from python.signal_processer.wavelet_transformer.wavelet_transformer import WaveletTransformer
+from python.signal_processor.wavelet_transformer.wavelet_transformer import WaveletTransformer
 
 if __name__ == '__main__':
     current_data_folder = os.path.join(DATA_FOLDER, 'kerch_2019_baranova')
