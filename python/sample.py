@@ -16,14 +16,13 @@ if __name__ == '__main__':
 
     for filename in DATA_FOLDER.glob('**/*.txt'):
         time, signal = read_text_file(filename)
-        w_t = WaveletTransformer()
+        w_t = WaveletTransformer(signal)
 
-        intensity: np.ndarray = w_t.intensity(signal)
-
-        fig, ax = plt.subplots(nrows=2, ncols=2)
-
+        intensity: np.ndarray = w_t.intensity()
         energy = compute_energy(signal, intensity, w_t.number_of_filters)
         power = compute_power(w_t.frequency_scale_cph, signal)
+
+        fig, ax = plt.subplots(nrows=2, ncols=2)
         plot_mareogramm(time, signal, ax[0][0])
         plot_power(time, power, ax[0][1])
         plot_wavelet(intensity[::-1], time, w_t.frequency_scale_cph, ax[1][0])
