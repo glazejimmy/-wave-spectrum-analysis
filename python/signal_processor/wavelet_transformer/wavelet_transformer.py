@@ -16,11 +16,11 @@ class WaveletTransformer:
         ```
     """
 
-    def __init__(self, number_of_filters=200, max_c_p_h=6):
+    def __init__(self, number_of_filters: int = 200, max_c_p_h: int = 6):
         """
         Constructor of the WaveletTransformer
         :param number_of_filters: number of filters (default = 200)
-        :param max_c_p_h:maximum frequency in cycles per hour (default = 6)
+        :param max_c_p_h: maximum frequency in cycles per hour (default = 6)
         """
         self.number_of_filters = number_of_filters
         self.max_c_p_h = max_c_p_h
@@ -39,7 +39,7 @@ class WaveletTransformer:
     def frequency_scale_cph(self):
         return self._compute_f0() * self.seconds
 
-    def __call__(self, signal, alpha=10 ** -2):
+    def intensity(self, signal: np.ndarray, alpha: float = 10 ** -2):
         filter_bank = self._compute_filter_bank()
         intensity = firfb_proc(filter_bank, signal)
         intensity_log = 20 * np.log(abs(intensity) + alpha)
